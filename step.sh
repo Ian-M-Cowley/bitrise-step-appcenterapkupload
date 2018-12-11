@@ -40,7 +40,7 @@ echo
 # --- Main
 
 npm install appcenter-cli@1.0.8 -g
-appcenter distribute release --file "$app_path" --app "$app_center_app" --group "$app_center_distribution_group" --token "${app_center_token}"
+appcenter distribute release --file "$app_path" --app "$app_center_app" --group "$app_center_distribution_group" --token "${app_center_token}" --debug
 
 #
 # --- Exit codes:
