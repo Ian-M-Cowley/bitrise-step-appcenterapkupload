@@ -83,8 +83,9 @@ inputs:
   - app_center_token: "$APP_CENTER_TOKEN"
     opts:
       title: "App Center API token"
-      summary: "App Ceneter APK token with access to app specified in app_center_app"
+      summary: "App Center APK token with access to app specified in App Center app"
       description: |
         Create API token using cli "appcenter tokens create".
       is_expand: true
       is_required: true
+      is_sensitive: true
