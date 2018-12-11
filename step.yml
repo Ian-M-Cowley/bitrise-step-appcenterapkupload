@@ -8,9 +8,9 @@
 # - Bitrise CLI guides: http://devcenter.bitrise.io/bitrise-cli/
 
 title: |-
-  AppCenterApkUpload
+  App Center Apk Upload
 summary: |
-  Uploads an Android APK to App Center and deploys to a given distribution group
+  Uploads an Android APK to App Center
 description: |
   Uploads an Android APK to App Center and deploys to a given distribution group
 website: https://github.com/Ian-M-Cowley/bitrise-step-appcenterapkupload
@@ -29,14 +29,8 @@ host_os_tags:
 # You can find more information about project type tags in the Step Development Guideline:
 # https://github.com/bitrise-io/bitrise/blob/master/_docs/step-development-guideline.md
 #
-# project_type_tags:
-#   - ios
-#   - macos
-#   - android
-#   - xamarin
-#   - react-native
-#   - cordova
-#   - ionic
+project_type_tags:
+  - android
 
 # Type tags are used for categorizing steps, for easier step discovery in Step Libraries.
 # You can find more information about type tags in the Step Development Guideline:
@@ -51,11 +45,9 @@ run_if: ""
 
 deps:
   brew:
-  - name: git
-  - name: wget
+  - name: npm
   apt_get:
-  - name: git
-  - name: wget
+  - name: npm
 
 
 toolkit:
@@ -64,24 +56,35 @@ toolkit:
 
 
 inputs:
-  - example_step_input: Default Value - you can leave this empty if you want to
+  - app_path: "$BITRISE_APK_PATH"
     opts:
-      title: "Example Step Input"
-      summary: Summary. No more than 2-3 sentences.
+      title: "App path"
+      summary: ""
       description: |
-        Description of this input.
-
-        Can be Markdown formatted text.
+        App file path, for example to an APK file for Android.
       is_expand: true
       is_required: true
-      value_options: []
-
-outputs:
-  - EXAMPLE_STEP_OUTPUT:
+  - app_center_app: "$APP_CENTER_APP"
     opts:
-      title: "Example Step Output"
-      summary: Summary. No more than 2-3 sentences.
+      title: "App Center app"
+      summary: username/app_name or org/app_name
       description: |
-        Description of this output.
-
-        Can be Markdown formatted text.
+        Get all available apps using cli "appcenter apps list".
+      is_expand: true
+      is_required: true
+  - app_center_distribution_group: "$APP_CENTER_DISTRIBUTION_GROUP"
+    opts:
+      title: "App Center Distribution Group"
+      summary: ""
+      description: |
+        Get all available groups using cli "appcenter distribute groups list"
+      is_expand: true
+      is_required: true
+  - app_center_token: "$APP_CENTER_TOKEN"
+    opts:
+      title: "App Center API token"
+      summary: "App Ceneter APK token with access to app specified in app_center_app"
+      description: |
+        Create API token using cli "appcenter tokens create".
+      is_expand: true
+      is_required: true
