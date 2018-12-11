@@ -1,4 +1,4 @@
-# AppCenterApkUpload
+# App Center Apk Upload
 
 Uploads an Android APK to App Center and deploys to a given distribution group
 
